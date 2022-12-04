@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
+const port = 3000;
 
 const connectDB = require('./server/database/connection');
 
@@ -12,10 +13,10 @@ const app = express();
 
 dotenv.config({path : 'config.env'});
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || port;
 
 // log request..
-app.use(morgan('tiny'));
+app.use(morgan('tiny'));  // provides the minimal output,declare a status ,respons time in milisecond
 
 // mongodb connection 
 connectDB();
